@@ -23,12 +23,13 @@ passport.use(
     {
       clientID: googleClientID,
       clientSecret: googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(existingUser => {
         if (existingUser) {
-          //we already have a record with the given profile id
+          //we already have a record with the given profile ID
           done(null, existingUser);
         } else {
           //we dont have one with this id, make a new one
