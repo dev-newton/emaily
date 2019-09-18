@@ -26,3 +26,5 @@ export default connect(
   null,
   actions
 )(Payments);
+
+console.log(process.env.REACT_APP_STRIPE_KEY);
